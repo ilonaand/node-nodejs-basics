@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'part';
 const { release, version } = require('os');
 const { createServer: createServerHttp } = require('http');
 require('./files/c');

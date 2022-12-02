@@ -1,4 +1,4 @@
-import { _readDir } from './utils.js'
+import { _readDir } from '../utils.js'
 import { fileURLToPath } from 'url';
 import path from 'path';
 

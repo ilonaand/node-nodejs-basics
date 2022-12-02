@@ -1,5 +1,5 @@
 import { readFile } from 'fs/promises';
-import { checkFileExists } from './utils.js';
+import { checkFileExists } from '../utils.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 

@@ -2,7 +2,7 @@ import { cp } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { checkFileExists } from './utils.js';
+import { checkFileExists } from '../utils.js';
 
 const copy = async () => {
    const __filename = fileURLToPath(import.meta.url);
