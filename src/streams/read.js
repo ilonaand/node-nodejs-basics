@@ -6,13 +6,21 @@ import { fileURLToPath } from 'url';
 
 import  process from 'process';
 
+import { checkFileExists } from '../utils.js';
+
 const read = async () => {
     const __filename = fileURLToPath(import.meta.url);
 
     const __dirname = path.dirname(__filename);
 
     const fileName = path.join(__dirname,'files/FileToRead.txt');
-    
+
+    const check = await checkFileExists(fileName);
+
+    if (!check) {
+       throw new Error(`FS operation failed: file ${fileName} not exists`);
+    }
+
     const streamRead = createReadStream(fileName, {encoding: 'utf8'});
     
     let data = '';
