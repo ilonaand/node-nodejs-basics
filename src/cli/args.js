@@ -1,5 +1,5 @@
 
-import  process  from 'process'
+import  process  from 'process';
 const parseArgs = () => {
   const flagArray = process.argv.slice(2);
   let arr = [];
