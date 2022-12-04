@@ -1,21 +1,31 @@
 import  process from 'process';
 
-import { Transform } from 'stream';
+import { Transform, pipeline } from 'stream';
+
+import { EOL } from 'os';
 
 const transform = async () => {
   
     const readStream = process.stdin;
-    const writeStrean = process.stdout;
+    const writeStream = process.stdout;
     
     const revers = new Transform({
       transform(chunk, encoding, callback) {
-        const result = chunk.toString().split('').reverse().join('');
-        this.push(result)
-        callback();
+
+        const chunkStr = chunk.toString().replace(EOL, '');
+
+        const result = chunkStr.split('').reverse().join('') + EOL;
+
+        callback(null, result);
+
       },
     });
     
-    readStream.pipe(revers).pipe(writeStrean); 
+    pipeline(
+      readStream,
+      revers,
+      writeStream,
+      (err) => console.error('Pipeline failed', err));
 };
 
 await transform();

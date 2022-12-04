@@ -24,11 +24,6 @@ const write = async () => {
 
     const readable = process.stdin;
 
-    readable.on("error", err => {
-        console.error(err);
-        process.exit(1);
-      });
-
     const streamWrite = createWriteStream(fileName, {encoding: 'utf8'});
 
     readable.pipe(streamWrite, { end: true });
