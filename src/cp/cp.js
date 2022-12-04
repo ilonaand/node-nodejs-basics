@@ -18,4 +18,4 @@ const spawnChildProcess = async (args) => {
     
 };
 
-spawnChildProcess('--arg1 value1 -arg2 value2');
+spawnChildProcess('--arg1 value1 --arg2 value2');
