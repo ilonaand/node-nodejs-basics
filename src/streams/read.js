@@ -23,14 +23,16 @@ const read = async () => {
 
     const streamRead = createReadStream(fileName, {encoding: 'utf8'});
     
-    let data = '';
+    const data = [];
     streamRead.on('readable', () => {
-        let chunk = streamRead.read();
-        if (chunk !== null) data += chunk;
+        let chunk;
+        while (null !== (chunk = streamRead.read())){
+            data.push(chunk);
+          };
     });
 
     streamRead.on('end', () => {
-        process.stdout.write(data.toString());
+        process.stdout.write(data.join('').toString());
     });
 
     streamRead.on("error", err => {
